@@ -12,9 +12,24 @@ cd ~/Documents/personal/skillsbary
 uv sync
 ```
 
+## Jalankan via Docker Compose (SSE)
+
+```bash
+cd ~/Documents/personal/skillsbary
+docker compose up -d --build
+```
+
+- Server MCP jalan di `http://localhost:8765` (transport SSE), endpoint `/sse`.
+- Data persisten di volume `skillsbary_data` (SQLite `/data/skills.db`).
+- Daftarkan ke Claude Code:
+  ```bash
+  claude mcp add --transport sse skillsbary http://localhost:8765/sse
+  ```
+
 ## Data
 
-Disimpan di SQLite `~/.skillsbary/skills.db` (shared antar agent). Override via env `SKILLSBARY_DB`.
+Lokal (stdio): SQLite `~/.skillsbary/skills.db` (shared antar agent). Override via env `SKILLSBARY_DB`.
+Docker (SSE): SQLite di volume `skillsbary_data`.
 
 ## Tools
 

@@ -1,0 +1,17 @@
+services:
+  skillsbary:
+    build: .
+    container_name: skillsbary
+    restart: always
+    ports:
+      - "8765:8765"
+    environment:
+      - SKILLSBARY_TRANSPORT=sse
+      - SKILLSBARY_HOST=0.0.0.0
+      - SKILLSBARY_PORT=8765
+      - SKILLSBARY_DB=/data/skills.db
+    volumes:
+      - skillsbary_data:/data
+
+volumes:
+  skillsbary_data:

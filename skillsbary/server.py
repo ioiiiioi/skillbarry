@@ -2,12 +2,22 @@
 
 Exposes tools to store and search GitHub skill repositories, so an AI agent
 can collect public skills and later look them up when it needs one.
+
+Transport is selected via SKILLSBARY_TRANSPORT env var:
+  - "stdio" (default) — for local `claude mcp add` / agent subprocess
+  - "sse"            — long-lived HTTP server (for Docker)
+  - "streamable-http" — long-lived HTTP server
 """
+import os
+
 from mcp.server.fastmcp import FastMCP
 
 from skillsbary import db
 
-mcp = FastMCP("skillsbary")
+HOST = os.getenv("SKILLSBARY_HOST", "0.0.0.0")
+PORT = int(os.getenv("SKILLSBARY_PORT", "8765"))
+
+mcp = FastMCP("skillsbary", host=HOST, port=PORT)
 
 
 @mcp.tool()
@@ -66,7 +76,8 @@ def remove_skill(name: str) -> dict:
 
 def main() -> None:
     db.init_db()
-    mcp.run()
+    transport = os.getenv("SKILLSBARY_TRANSPORT", "stdio")
+    mcp.run(transport=transport)
 
 
 if __name__ == "__main__":
