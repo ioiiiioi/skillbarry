@@ -41,6 +41,27 @@ Docker (SSE): SQLite di volume `skillsbary_data`.
 | `get_skill(name)` | Ambil satu (URL + deskripsi) |
 | `remove_skill(name)` | Hapus |
 
+## UI List (Prefab)
+
+Tabel skill pakai [Prefab UI](https://prefab.prefect.io/docs/welcome.md) — di-render jadi satu file HTML
+self-contained (renderer dari CDN). Tanpa server, tanpa build step.
+
+```bash
+uv run skillsbary-ui              # tulis skills.html
+uv run skillsbary-ui -o out.html  # path custom
+```
+
+Kolom: Nama, Deskripsi, Tags, Repo (link), Ditambahkan. Ada search + pagination + sort.
+
+Preview live-reload saat ngoprek tampilan:
+
+```bash
+uv run prefab serve skillsbary/ui.py
+```
+
+`SKILLSBARY_DB` menentukan DB yang dibaca — default `~/.skillsbary/skills.db`,
+DB repo bisa dipakai lewat `SKILLSBARY_DB=./skillbarry-skills.db uv run skillsbary-ui`.
+
 ## Daftarkan ke Claude Code
 
 ```bash

@@ -6,10 +6,12 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "mcp>=1.2.0,<2",
+    "prefab-ui>=0.20.2",
 ]
 
 [project.scripts]
 skillsbary = "skillsbary.server:main"
+skillsbary-ui = "skillsbary.ui:main"
 
 [build-system]
 requires = ["hatchling"]
