@@ -8,14 +8,14 @@ dia cukup `search_skills("pdf parsing")` → dapat URL → install (clone / baca
 ## Install
 
 ```bash
-cd ~/Documents/personal/skillsbary
+cd ~/Documents/personal/skillbarry
 uv sync
 ```
 
 ## Jalankan via Docker Compose (SSE)
 
 ```bash
-cd ~/Documents/personal/skillsbary
+cd ~/Documents/personal/skillbarry
 docker compose up -d --build
 ```
 
@@ -44,7 +44,7 @@ Docker (SSE): SQLite di volume `skillsbary_data`.
 ## Daftarkan ke Claude Code
 
 ```bash
-claude mcp add skillsbary -- uv run --directory /home/hexboi/Documents/personal/skillsbary skillsbary
+claude mcp add skillsbary -- uv run --directory /home/hexboi/Documents/personal/skillbarry skillsbary
 ```
 
 Atau manual di `.mcp.json` / `claude mcp` config:
@@ -54,7 +54,7 @@ Atau manual di `.mcp.json` / `claude mcp` config:
   "mcpServers": {
     "skillsbary": {
       "command": "uv",
-      "args": ["run", "--directory", "/home/hexboi/Documents/personal/skillsbary", "skillsbary"]
+      "args": ["run", "--directory", "/home/hexboi/Documents/personal/skillbarry", "skillsbary"]
     }
   }
 }
