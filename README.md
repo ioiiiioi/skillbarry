@@ -12,18 +12,18 @@ cd ~/Documents/personal/skillbarry
 uv sync
 ```
 
-## Jalankan via Docker Compose (SSE)
+## Jalankan via Docker Compose (streamable HTTP)
 
 ```bash
 cd ~/Documents/personal/skillbarry
 docker compose up -d --build
 ```
 
-- Server MCP jalan di `http://localhost:8765` (transport SSE), endpoint `/sse`.
+- Server MCP jalan di `http://localhost:8765` (transport streamable HTTP), endpoint `/mcp`.
 - Data persisten di volume `skillsbary_data` (SQLite `/data/skills.db`).
 - Daftarkan ke Claude Code:
   ```bash
-  claude mcp add --transport sse skillsbary http://localhost:8765/sse
+  claude mcp add --transport http skillsbary http://localhost:8765/mcp
   ```
 
 ## Data

@@ -9,7 +9,7 @@ COPY skillsbary ./skillsbary
 
 RUN uv sync --frozen --no-dev
 
-ENV SKILLSBARY_TRANSPORT=sse \
+ENV SKILLSBARY_TRANSPORT=streamable-http \
     SKILLSBARY_HOST=0.0.0.0 \
     SKILLSBARY_PORT=8765 \
     SKILLSBARY_DB=/data/skills.db

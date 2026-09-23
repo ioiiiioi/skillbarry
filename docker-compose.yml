@@ -6,7 +6,7 @@ services:
     ports:
       - "8765:8765"
     environment:
-      - SKILLSBARY_TRANSPORT=sse
+      - SKILLSBARY_TRANSPORT=streamable-http
       - SKILLSBARY_HOST=0.0.0.0
       - SKILLSBARY_PORT=8765
       - SKILLSBARY_DB=/data/skills.db
